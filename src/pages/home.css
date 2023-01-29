@@ -1,0 +1,8 @@
+.hero-banner {
+    padding: 250px 0px 0px 0px;
+    height: 500px;
+    background-image: url(https://images.unsplash.com/photo-1551763336-d71ed8103d8d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80);
+    background-size:cover;
+    background-position-y: center;
+    color: white;   
+}

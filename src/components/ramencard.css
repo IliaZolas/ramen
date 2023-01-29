@@ -1,0 +1,48 @@
+.card-area {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ramen-card {
+    background-color: white;
+    border-radius: 5px;
+    width: 400px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    margin: 20px;
+    padding: 20px;
+}
+
+.card-button-area {
+    display: flex;
+    justify-content: space-around;
+}
+
+.button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: white;
+
+}
+
+.show-button {
+    background-color: green;
+}
+
+.delete-button {
+    background-color: red;
+}
+
+.update-button {
+    background-color: blue;
+}
+
+.card-image-container {
+    /* background-color: grey; */
+    width: 400px;
+    height: 250px;
+    overflow: hidden;
+    
+}

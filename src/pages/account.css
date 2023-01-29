@@ -1,0 +1,9 @@
+.show-user-container {
+    width:500px;
+    margin: auto;
+    padding: 20px;;
+}
+
+.show-user-image {
+    border-radius: 50%;
+}

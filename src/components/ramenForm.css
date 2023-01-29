@@ -1,0 +1,50 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: auto;
+}
+
+.labels {
+    padding: 5px 0 5px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+input {
+    margin: 10px 0 10px 0;
+}
+
+.primary-submit-button {
+    color: white;
+    font-size: 18px;;
+    background-color: red;
+    border: 0px;
+    padding: 20px 10px;
+}
+
+.form-image-container {
+    background-color: lightgrey;
+    height: 250px;
+    width: 400px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.new-ramen-image {
+    width:400px;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-user-image-container {
+    border-radius: 50%;
+    background-color: lightgrey;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    margin-top: 30px;
+}

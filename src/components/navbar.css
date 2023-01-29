@@ -1,0 +1,51 @@
+.navbar {
+    background-color: red;
+}
+
+.navitems {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    justify-content: right;
+}
+
+.nav-item {
+    padding: 30px;
+}
+
+.item {
+    color: white;
+    text-decoration: none;
+    
+}
+
+Link {
+    background-color: green;
+}
+
+.user-navitem {
+    color:white;
+    padding: 30px;
+}
+
+.nav-dropdown {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 0px ;
+    background-color: beige;
+    z-index: 1;
+}
+
+.dropdown-item {
+    padding: 20px;
+}
+
+.user-navitem:hover .nav-dropdown {
+    display: block;
+}
+
+.item-in-dropdown {
+    color: black;
+    text-decoration: none;
+}

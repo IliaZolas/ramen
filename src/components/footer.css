@@ -1,0 +1,11 @@
+.footer {
+    background-color: red;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer-column {
+    
+}
