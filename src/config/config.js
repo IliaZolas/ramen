@@ -4,4 +4,4 @@ const production = {
   const development = {
     url: 'http://localhost:4000'
   };
-  export const config = process.env.NODE_ENV === 'development' ? development : production;
+  export const config = process.env.NODE_ENV === 'development' ? production : development;
