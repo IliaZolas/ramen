@@ -1,5 +1,5 @@
 const production = {
-    url: 'https://ramen-production.up.railway.app'
+    url: 'https://ramen-api-production.up.railway.app'
   };
   const development = {
     url: 'http://localhost:4000'
