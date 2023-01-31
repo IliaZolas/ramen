@@ -23,7 +23,8 @@ function App() {
   useEffect(() => {
     const id = localStorage.getItem('id');
     // console.log("user id", id);
-
+  
+    if (id) {
     fetch(`${URL}/app/user/show/${id}`, {
         method: 'GET',
         })
@@ -34,7 +35,7 @@ function App() {
         .catch((err) => {
             console.log(err.message);
         });
-    },
+    }},
     []);
 
   const value = useMemo(() => ({ user, setUser }), [user, setUser]);
