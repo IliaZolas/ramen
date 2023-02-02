@@ -8,7 +8,6 @@ const Home = () => {
             <div className="hero-banner">
                <h1>Ramen Cookbook</h1>
                <p>Find a ramen to cook from this database</p>
-               <p>For ramen enthusiasts</p>
                <PrimaryButton />
             </div>
             <Footer />
