@@ -27,7 +27,7 @@ function App() {
     console.log(email,id)
 
 
-    if (id !== undefined && id !== null) {
+    if (id !== null) {
       console.log("condition true")
       fetch(`${URL}/app/user/show/${id}`, {
         method: 'GET',
