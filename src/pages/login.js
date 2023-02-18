@@ -34,7 +34,7 @@ const LoginUser = () => {
             const result = await response.json();
             const userEmail = result.email;
             const userId = result.userId;
-           if (userId !== undefined && userEmail !== undefined) {
+           if (userId !== undefined ) {
                 cookies.set("TOKEN", result.token, {
                     path: "/"
                     });
