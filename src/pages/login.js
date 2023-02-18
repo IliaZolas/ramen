@@ -34,16 +34,18 @@ const LoginUser = () => {
             const result = await response.json();
             const userEmail = result.email;
             const userId = result.userId;
-            cookies.set("TOKEN", result.token, {
-                path: "/"
-                });
-            localStorage.setItem('email', userEmail);
-            localStorage.setItem('id', userId);
-            setEmail();
-            setPassword();
-            setLogin(true);
-            setToken(result.token);
-            setUser(result);
+           if (userId !== undefined && userEmail !== undefined) {
+                cookies.set("TOKEN", result.token, {
+                    path: "/"
+                    });
+                localStorage.setItem('email', userEmail);
+                localStorage.setItem('id', userId);
+                setEmail();
+                setPassword();
+                setLogin(true);
+                setToken(result.token);
+                setUser(result);
+            }
         })
         .catch((err) => {
         console.log(err.message , ":error message");
