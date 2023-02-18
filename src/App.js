@@ -22,10 +22,14 @@ function App() {
 
   useEffect(() => {
     const id = localStorage.getItem('id');
-    // console.log("user id", id);
-  
-    if (id) {
-    fetch(`${URL}/app/user/show/${id}`, {
+    const email = localStorage.getItem('email');
+
+    console.log(email,id)
+
+
+    if (id !== undefined && id !== null) {
+      console.log("condition true")
+      fetch(`${URL}/app/user/show/${id}`, {
         method: 'GET',
         })
         .then((response) => response.json())
