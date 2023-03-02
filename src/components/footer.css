@@ -1,11 +1,21 @@
 .footer {
-    background-color: red;
-    height: 300px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    position: absolute;
+    left: 40px;
+    bottom: 0px;
+    color: #ED3D1E;
 }
 
 .footer-column {
-    
+    display: flex;
+}
+
+.footer-column a {
+    color: #ED3D1E;
+}
+
+.footer-line {
+    border: 1px solid #ED3D1E;
+    width: 90%;
 }

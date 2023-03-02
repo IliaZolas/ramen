@@ -11,8 +11,8 @@ const cookies = new Cookies();
 
 const URL = config.url;
 
-const ShowRamen = () => {
-    const [ramen, setRamen] = useState([]);
+const ShowIngredient = () => {
+    const [ingredient, setIngredient] = useState([]);
     const { user } = useContext(UserContext);
     const navigate = useNavigate();
     const params = useParams();
@@ -20,11 +20,11 @@ const ShowRamen = () => {
     useEffect(() => {
         const id = params.id;
 
-        fetch(`${URL}/app/ramen/show/${id}`, {
+        fetch(`${URL}/app/ingredient/show/${id}`, {
             method: 'GET',
             }).then((response) => response.json())
             .then((data) => {
-                setRamen(data);
+                setIngredient(data);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -32,33 +32,33 @@ const ShowRamen = () => {
         },
         []);
         
-        const deleteRamen = async (id, public_id) => {
+        const deleteIngredient = async (id, public_id) => {
             console.log("delete:",id)
             console.log("delete:",public_id)
             const token = cookies.get("TOKEN");
 
-            fetch(`${URL}/app/ramen/delete/${id}/${public_id}`, {
+            fetch(`${URL}/app/ingredient/delete/${id}/${public_id}`, {
             method: 'DELETE',
             headers: {
             'Authorization': `${token}`,
         },
             }).then((response) => {            
                 if (response.status === 200) {
-                    setRamen();
-                    console.log("Ramen deleted");
+                    setIngredient();
+                    console.log("Ingredient deleted");
                     } else {
                         return;
                     }
                 });
-                navigate('/ramen');
+                navigate('/ingredients');
             };
 
-            const allRamens = () => {
-                navigate('/ramen');
+            const allIngredients = () => {
+                navigate('/ingredients');
             }
 
-            const updateRamen = (id) => {
-                navigate(`/ramen/update/${id}`);
+            const updateIngredient = (id) => {
+                navigate(`/ingredient/update/${id}`);
             };
 
     return (
@@ -67,23 +67,21 @@ const ShowRamen = () => {
                 <div className="flex space-around" >
                     <div className="show-page-img-ing">   
                         <div className="show-image-container">  
-                            <img src={ramen.imageUrl} style={{width: 400}} alt="" />
+                            <img src={ingredient.imageUrl} style={{width: 400}} alt="" />
                         </div>
-                        <h1>Ingredients</h1>
-                        <h2 className="">{ramen.ingredients}</h2>
                     </div>
                     <div className="show-page-description">
-                    <h1>{ramen.title}</h1>
-                        <div dangerouslySetInnerHTML={{ __html: ramen.description}} />
+                    <h1>{ingredient.ingredient}</h1>
+                        <div dangerouslySetInnerHTML={{ __html: ingredient.calories}} />
                         {user ? (
                         <div className="card-button-area-show flex">
-                            <div className="show-button button" onClick={() => allRamens()} ><FontAwesomeIcon icon={faCircleLeft} className="back"/> Back to list</div>
-                            <div className="update-button button" onClick={() => updateRamen(ramen._id)} ><FontAwesomeIcon icon={faPenToSquare} className="update"/> Update</div>
-                            <div className="delete-button button" onClick={() => deleteRamen(ramen._id, ramen.public_id)} id={ramen.id} ><FontAwesomeIcon icon={faTrash} className="delete"/> Delete</div>
+                            <div className="show-button button" onClick={() => allIngredients()} ><FontAwesomeIcon icon={faCircleLeft} className="back"/> Back to list</div>
+                            <div className="update-button button" onClick={() => updateIngredient(ingredient._id)} ><FontAwesomeIcon icon={faPenToSquare} className="update"/> Update</div>
+                            <div className="delete-button button" onClick={() => deleteIngredient(ingredient._id, ingredient.public_id)} id={ingredient.id} ><FontAwesomeIcon icon={faTrash} className="delete"/> Delete</div>
                         </div>
                         ) : (
                         <div className="card-button-area-show">
-                            <div className="show-button button" onClick={() => allRamens()} ><FontAwesomeIcon icon={faCircleLeft} className="ramen-bowl"/> Back to list</div>
+                            <div className="show-button button" onClick={() => allIngredients()} ><FontAwesomeIcon icon={faCircleLeft} className="ramen-bowl"/> Back to list</div>
                         </div>
                         )}
                     </div>
@@ -93,4 +91,4 @@ const ShowRamen = () => {
     );
 }
 
-export default ShowRamen;
+export default ShowIngredient;

@@ -2,16 +2,15 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import {Image} from 'cloudinary-react';
 import { config } from '../config/config';
-import "../components/ramenForm.css"
-import "./signup.css"
+import "./ramenForm.css"
+import 'react-quill/dist/quill.snow.css';
+
 
 const URL = config.url;
 
-const AddUser = () => {
-    const [name, setName ] = useState('');
-    const [surname, setSurname ] = useState('');
-    const [email, setEmail ] = useState('');
-    const [password, setPassword] = useState('');
+const AddIngredient= () => {
+    const [ingredient, setIngredient ] = useState('');
+    const [calories, setCalories ] = useState('');    
     const [imageUrl, setImageUrl] = useState('');
     const [publicId, setPublicId] = useState('');
     const navigate = useNavigate();
@@ -35,14 +34,12 @@ const AddUser = () => {
             })            
         };
 
-    const AddUser = async ( name, surname, email, password, imageUrl, publicId) => {
-        await fetch(`${URL}/app/signup`, {
+    const AddRamen = async ( ingredient, calories, imageUrl, publicId) => {
+        await fetch(`${URL}/app/ingredient/add`, {
         method: 'POST',
         body: JSON.stringify({
-            name: name,
-            surname: surname,
-            email: email,
-            password: password,
+            ingredient: ingredient,
+            calories: calories,
             imageUrl: imageUrl,
             publicId: publicId
         }),
@@ -54,59 +51,41 @@ const AddUser = () => {
             console.log(response.json());
         })
         .then(() => {
-        setName();
-        setSurname();
-        setEmail();
-        setPassword();
+        setIngredient();
+        setCalories();
         })
         .catch((err) => {
-        console.log(err.message , ":error message");
+        console.log("error message", err.message);
     });
     navigate('/ramen');
 };
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    AddUser(name, surname, email, password, imageUrl, publicId);
+    AddRamen( ingredient, calories, imageUrl, publicId );
 };
 
     return (
     <div>
-        <div className="form-user-image-container">
-            <Image className="new-user-image" cloudName="iliacloud9" publicId={imageUrl} />
+        <div className="form-image-container">
+            <Image className="new-ramen-image" cloudName="iliacloud9" publicId={imageUrl} />
         </div>
         <form method="post" onSubmit={handleSubmit} enctype="multipart/form-data">
             <label className="labels">
-                Name
+                Ingredient
                 <input 
                     type="text" 
-                    name="name" 
-                    placeholder="name"
-                    onChange={e => setName(e.target.value)} />
+                    name="ingredient" 
+                    placeholder="ingredient"
+                    onChange={e => setIngredient(e.target.value)} />
             </label>
             <label className="labels">
-                Surname
+                Calories
                 <input 
                     type="text" 
-                    name="surname" 
-                    placeholder="surname"
-                    onChange={e => setSurname(e.target.value)} />
-            </label>
-            <label className="labels">
-                Email
-                <input
-                    type="text" 
-                    name="email" 
-                    placeholder="email"
-                    onChange={e => setEmail(e.target.value)} />
-            </label>
-            <label className="labels">
-                Password
-                <input 
-                    type="text" 
-                    name="password" 
-                    placeholder="password"
-                    onChange={e => setPassword(e.target.value)} />
+                    name="calories" 
+                    placeholder="calories"
+                    onChange={e => setCalories(e.target.value)} />
             </label>
             <label className="labels">
                 Image
@@ -114,16 +93,16 @@ const handleSubmit = (e) => {
             </label>
             <label className="labels hidden">
                 imageUrl
-                <input
-                    type="text" 
+                <textarea 
+                    type="textarea" 
                     name="imageUrl" 
                     value={imageUrl}
                     onChange={e => setImageUrl(e.target.value)} />
             </label>
             <label className="labels hidden">
                 publicId
-                <input
-                    type="text" 
+                <textarea 
+                    type="textarea" 
                     name="publicId" 
                     value={publicId}
                     onChange={e => setPublicId(e.target.value)} />
@@ -134,4 +113,4 @@ const handleSubmit = (e) => {
     )
 };
 
-export default AddUser;
+export default AddIngredient;

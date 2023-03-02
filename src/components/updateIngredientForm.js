@@ -11,10 +11,9 @@ const cookies = new Cookies();
 
 const URL = config.url;
 
-const UpdateRamenForm = () => {
-    const [title, setTitle ] = useState('');
-    const [ingredients, setIngredients ] = useState('');
-    const [description, setDescription ] = useState('');
+const UpdateIngredientForm = () => {
+    const [ingredient, setIngredient ] = useState('');
+    const [calories, setCalories ] = useState('');
     const [imageUrl, setImageUrl] = useState('');
     const [publicId, setPublicId] = useState('');
     const navigate = useNavigate();
@@ -22,13 +21,12 @@ const UpdateRamenForm = () => {
 
     useEffect(() => {
         const id = params.id;
-        fetch(`${URL}/app/ramen/show/${id}`, {
+        fetch(`${URL}/app/ingredient/show/${id}`, {
             method: 'GET',
             }).then((response) => response.json())
             .then((data) => {
-                setTitle(data.title);
-                setIngredients(data.ingredients);
-                setDescription(data.description);
+                setIngredient(data.title);
+                setCalories(data.ingredients);
                 setImageUrl(data.imageUrl);
                 setPublicId(data.public_id);
             })
@@ -57,15 +55,14 @@ const UpdateRamenForm = () => {
             })            
         };
 
-    const updateRamen = async (id, title, ingredients, description, imageUrl, publicId) => {
+    const updateIngredient = async (id, ingredient, calories, imageUrl, publicId) => {
         const token = cookies.get("TOKEN");
 
-        await fetch(`${URL}/app/ramen/update/${id}`, {
+        await fetch(`${URL}/app/ingredient/update/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                title: title,
-                ingredients: ingredients,
-                description: description,
+                ingredient: ingredient,
+                calories: calories,
                 imageUrl: imageUrl,
                 publicId: publicId
             }),
@@ -78,9 +75,8 @@ const UpdateRamenForm = () => {
                 response.json();
             })
             .then(() => {
-            setTitle();
-            setIngredients();
-            setDescription();
+            setIngredient();
+            setCalories();
             setImageUrl();
             setPublicId();
             })
@@ -91,8 +87,8 @@ const UpdateRamenForm = () => {
 
     const handleSubmit = () => {
         const id = params.id
-        updateRamen(id, title, ingredients, description, imageUrl, publicId );
-        navigate(`/ramen/show/${id}`);
+        updateIngredient(id, ingredient, calories, imageUrl, publicId );
+        navigate(`/ingredient/show/${id}`);
         
     };
     
@@ -104,30 +100,20 @@ const UpdateRamenForm = () => {
         </div>
         <form method="post" onSubmit={handleSubmit} enctype="multipart/form-data">
             <label className="labels">
-                Title
+                Ingredient
                 <input 
                     type="text" 
                     name="title" 
-                    placeholder={title}
-                    onChange={e => setTitle(e.target.value)} />
+                    placeholder={ingredient}
+                    onChange={e => setIngredient(e.target.value)} />
             </label>
             <label className="labels">
-                Ingredients
+                Calories
                 <input 
                     type="text" 
                     name="ingredients" 
-                    placeholder={ingredients}
-                    onChange={e => setIngredients(e.target.value)} />
-            </label>
-            <label className="labels">
-                Description
-                <ReactQuill
-                    theme="snow"
-                    type="textarea" 
-                    name="description" 
-                    placeholder={description}
-                    value={description}
-                    onChange={setDescription} />
+                    placeholder={calories}
+                    onChange={e => setCalories(e.target.value)} />
             </label>
             <label className="labels">
                 Image
@@ -157,4 +143,4 @@ const UpdateRamenForm = () => {
     )
 };
 
-export default UpdateRamenForm;
+export default UpdateIngredientForm;

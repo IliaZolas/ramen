@@ -1,10 +1,10 @@
-import RamenCard from '../components/ramenCard';
+import IngredientList from '../components/ingredientList';
 import './ramen.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBowlFood } from '@fortawesome/free-solid-svg-icons'
 
 
-const Ramen = () => {
+const Ingredient = () => {
     return (
         <div className="ramen-list-body fade-page">
             <div className="">
@@ -17,12 +17,12 @@ const Ramen = () => {
                             border: "1px solid",
                             height:"1px"
                         }}/>
-                    <h1>All ramens <FontAwesomeIcon icon={faBowlFood} className="ramen-bowl"/></h1>
+                    <h1>All ingredients <FontAwesomeIcon icon={faBowlFood} className="ramen-bowl"/></h1>
                 </div>
-                <RamenCard />
+                <IngredientList />
             </div>
         </div>
     );
 }
 
-export default Ramen;
+export default Ingredient;

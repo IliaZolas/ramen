@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-// import ramens from "../../../server/models/ramens";
 import {Image} from 'cloudinary-react';
 import { config } from '../config/config';
 import "./ramenForm.css"
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
+
 
 const URL = config.url;
 
@@ -15,12 +17,9 @@ const AddRamen = () => {
     const [publicId, setPublicId] = useState('');
     const navigate = useNavigate();
 
-    // console.log("image url in state:",imageUrl);
-
     const uploadUrl = `https://api.cloudinary.com/v1_1/iliacloud9/image/upload`
 
     const uploadImage = async (files) => {
-        // console.log("file being uploaded:",files.target.files[0]);
 
         const formData = new FormData()
         formData.append("file", files.target.files[0])
@@ -58,7 +57,6 @@ const AddRamen = () => {
         setTitle();
         setIngredients();
         setDescription();
-        // setImageUrl();
         })
         .catch((err) => {
         console.log(err.message , ":error message");
@@ -68,7 +66,6 @@ const AddRamen = () => {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    // uploadImage(file);
     AddRamen( title, ingredients, description, imageUrl, publicId );
 };
 
@@ -96,11 +93,12 @@ const handleSubmit = (e) => {
             </label>
             <label className="labels">
                 Description
-                <textarea 
+                <ReactQuill
+                    theme="snow"
                     type="textarea" 
                     name="description" 
                     placeholder="description"
-                    onChange={e => setDescription(e.target.value)} />
+                    onChange={setDescription} />
             </label>
             <label className="labels">
                 Image

@@ -2,6 +2,7 @@
 .primary-button {
     color: white;
     text-decoration: none;
-    background-color: red;
+    background-color: #ED3D1E;
     padding: 15px 20px;
+    cursor: pointer;
 }
