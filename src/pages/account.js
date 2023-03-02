@@ -8,11 +8,9 @@ const URL = config.url;
 const ShowUser = () => {
     const [user, setUser] = useState('');
     const navigate = useNavigate();
-    // const params = useParams();
 
     useEffect(() => {
         const id = localStorage.getItem('id');
-        // console.log("user id", id);
 
         fetch(`${URL}/app/user/show/${id}`, {
             method: 'GET',

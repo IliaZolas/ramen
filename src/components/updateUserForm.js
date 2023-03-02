@@ -20,7 +20,6 @@ const UpdateUserForm = () => {
 
     useEffect(() => {
         const id = params.id;
-        // console.log(id, "useEffect")
         fetch(`${URL}/app/user/show/${id}`, {
             method: 'GET',
             }).then((response) => response.json())
@@ -29,8 +28,7 @@ const UpdateUserForm = () => {
                 setSurname(data.surname);
                 setEmail(data.email);
                 setImageUrl(data.imageUrl);
-                setPublicId(data.public_id)
-                // console.log(data.title, data.ingredients, "data from useEffect")
+                setPublicId(data.public_id);
             })
             .catch((err) => {
                 console.log(err.message);
@@ -41,8 +39,6 @@ const UpdateUserForm = () => {
     const uploadUrl = `https://api.cloudinary.com/v1_1/iliacloud9/image/upload`
 
     const uploadImage = async (files) => {
-        // console.log("file being uploaded:",files.target.files[0]);
-
         const formData = new FormData()
         formData.append("file", files.target.files[0])
         formData.append("upload_preset", "yxlthn8k")

@@ -1,9 +1,15 @@
 .navbar {
-    background-color: red;
+    /* background-color: red; */
+}
+
+.logged-in {
+    background-color: #ED3D1E;
+    /* position: fixed;
+    width: 100%; */
 }
 
 .navitems {
-    color: white;
+    color: #272624;
     text-decoration: none;
     display: flex;
     justify-content: right;
@@ -14,9 +20,15 @@
 }
 
 .item {
-    color: white;
+    color: #272624;
     text-decoration: none;
     
+}
+
+.nav-cta a {
+    background-color: #ED3D1E;
+    color:white;
+    padding: 10px 15px;
 }
 
 Link {

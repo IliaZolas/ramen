@@ -1,10 +1,15 @@
 import './App.css';
 import Navbar from './components/navbar';
+import Footer from "./components/footer";
 import Home from './pages/home';
 import Ramen from './pages/ramen';
+import Ingredient from './pages/ingredients';
 import NewRamen from './pages/newRamen';
+import NewIngredient from './pages/newIngredient';
 import UpdateRamen from './pages/updateRamen';
+import UpdateIngredient from './pages/updateIngredient';
 import ShowRamen from './pages/showRamen';
+import ShowIngredient from './pages/showIngredient';
 import AddUser from './pages/signup';
 import LoginUser from './pages/login';
 import ShowUser from './pages/account';
@@ -22,14 +27,10 @@ function App() {
 
   useEffect(() => {
     const id = localStorage.getItem('id');
-    const email = localStorage.getItem('email');
-
-    console.log(email,id)
-
 
     if (id !== null) {
       console.log("condition true")
-      fetch(`${URL}/app/user/show/${id}`, {
+    fetch(`${URL}/app/user/show/${id}`, {
         method: 'GET',
         })
         .then((response) => response.json())
@@ -62,6 +63,10 @@ function App() {
                 path="/ramen/show/:id" 
                 element={<ShowRamen />} 
                 />
+                <Route 
+                path="/ingredient/show/:id" 
+                element={<ShowIngredient />} 
+                />
               <Route 
                 path="/signup" 
                 element={<AddUser />} 
@@ -77,6 +82,24 @@ function App() {
                     <NewRamen />   
                   }
                   />
+                  <Route
+                  path="/new-ingredient" 
+                  element={
+                    <NewIngredient />   
+                  }
+                  />
+                  <Route
+                  path="/ingredients" 
+                  element={
+                    <Ingredient />   
+                  }
+                  />
+                <Route
+                  path="/ingredient/update/:id" 
+                  element={
+                    <UpdateIngredient />   
+                  }
+                />
                 <Route
                   path="/ramen/update/:id" 
                   element={
@@ -97,6 +120,7 @@ function App() {
                   />
               </Route>
           </Routes>
+          <Footer />
         </div>
       </UserContext.Provider>
     </Router>

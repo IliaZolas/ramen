@@ -17,7 +17,7 @@ const LoginUser = () => {
     const { user, setUser } = useContext(UserContext);
     const navigate = useNavigate();
     
-
+// login incorrect, its allowing any type of input to access
     const loginUser = async ( email, password ) => {
         await fetch(`${URL}/app/login`, {
         method: 'POST',
@@ -34,7 +34,7 @@ const LoginUser = () => {
             const result = await response.json();
             const userEmail = result.email;
             const userId = result.userId;
-           if (userId !== undefined ) {
+            if (userId !== undefined && userEmail !== undefined) {
                 cookies.set("TOKEN", result.token, {
                     path: "/"
                     });
@@ -59,7 +59,7 @@ const handleSubmit = (e) => {
 };
 
     return (
-    <div>
+    <div className="container">
         <form method="post" onSubmit={handleSubmit} enctype="multipart/form-data">
             <label className="labels">
                 Email
